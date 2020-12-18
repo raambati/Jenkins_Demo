@@ -1,42 +1,40 @@
-pipeline 
-{
+pipeline {
     agent any
-    
-      stages 
-
-      {
-
-        stage('build') 
-
-            {
-                steps 
-
-                {
-                    echo 'BUilding the application'
-                }
-
+    stages {
+        stage('build') {
+            steps {
+                echo 'This is Sample testing'
             }
-        stage('test') 
-
-            {
-                steps 
-
-                {
-                    echo 'Testing the application'
-                }
-
+        }
+        stage('test') {
+            steps {
+                echo 'This is Sample testing'
             }
-        stage('deploy') 
-
-            {
-                steps 
-
-                {
-                    echo 'deploying the application'
-                }
-
+        }
+        stage('Sonarqube') {
+            steps {
+                echo 'This is Sample testing'
             }
-
-      }
-
+        }
+        stage('Fortify') {
+            steps {
+                echo 'This is Sample testing'
+            }
+        }
+        stage('Artefact') {
+            steps {
+                echo 'This is Sample testing'
+            }
+        }
+        stage('unitTest') {
+            steps {
+                echo 'This is Sample testing'
+            }
+        }
+        stage('JUnit') {
+            steps {
+                echo 'This is Sample testing'
+            }
+        }
+    }
 }
