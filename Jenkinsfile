@@ -4,6 +4,7 @@ pipeline {
         stage('build') {
             steps {
                 echo 'This is Sample testing'
+                echo 'Rajesh Ambati Testing Polling'
             }
         }
         stage('test') {
