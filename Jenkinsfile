@@ -1,40 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('run frontend') {
             steps {
-                echo 'This is Sample testing'
-                echo 'Rajesh Ambati Testing Polling'
+                echo 'Executing yarn.....'
+                nodejs('Node-10.17'){
+                    sh 'yarn Install'
+                }
             }
         }
-        stage('test') {
+        stage('run backend') {
             steps {
-                echo 'This is Sample testing'
-            }
-        }
-        stage('Sonarqube') {
-            steps {
-                echo 'This is Sample testing'
-            }
-        }
-        stage('Fortify') {
-            steps {
-                echo 'This is Sample testing'
-            }
-        }
-        stage('Artefact') {
-            steps {
-                echo 'This is Sample testing'
-            }
-        }
-        stage('unitTest') {
-            steps {
-                echo 'This is Sample testing'
-            }
-        }
-        stage('JUnit') {
-            steps {
-                echo 'This is Sample testing'
+                echo 'Executing gradle.....'
+                    withGradle(){
+                        sh './gradlew -v'
+                    }
+                }
             }
         }
     }
