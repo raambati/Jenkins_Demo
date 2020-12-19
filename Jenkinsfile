@@ -5,11 +5,16 @@ pipeline
     {
         stage ('run frontend')
         {
-           echo 'executing yarn....'
+           steps
+           {
+                echo 'executing yarn....'
+           }
         }
         stage ('run backend')
         {
-            echo 'executing gradle...'
+            steps {
+                echo 'executing gradle...'
+            }
         }
     }
 }
