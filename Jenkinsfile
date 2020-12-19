@@ -8,6 +8,7 @@ pipeline
            steps
            {
                 echo 'executing yarn....'
+               echo 'testing executing yarn....'
            }
         }
         stage ('run backend')
