@@ -19,8 +19,9 @@ pipeline
         {
             steps {
                 echo 'executing gradle...'
-                echo 'This is repeated test to build and upload to Artefact'
-            }
+                withGradle(){
+                    sh './gradle -v'
+                }
         }
     }
 }
