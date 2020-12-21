@@ -4,7 +4,7 @@ pipeline
 
     stages
     {
-        stage('RajeshFirstJob')
+        stage('Rajesh First Job')
         {
             steps
             {
