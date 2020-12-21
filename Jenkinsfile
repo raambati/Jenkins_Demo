@@ -9,9 +9,6 @@ pipeline
             steps
             {
                 echo 'Git Checkout'
-            }
-            steps
-            {
                 echo 'Building the Application'
             }
         }
