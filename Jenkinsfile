@@ -27,14 +27,13 @@ pipeline
                 echo 'executing gradle...'
                 withGradle()
                 {
-                    sh """
-                    . .env/bin/activate
-                    if [[ -f requirements/preinstall.txt ]]; then
-                        pip install -r requirements/preinstall.txt
-                    fi
-                    pip install -r requirements/test.txt
-                    ./manage.py test --noinput
-                    """
+                    sh '''
+                       conda create --yes -n ${BUILD_TAG} python
+                       source activate ${BUILD_TAG}
+                       // example of unit test with nose2
+                       pip install nose2
+                       nose2
+                    '''
                 }
             }
         }
