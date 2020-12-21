@@ -1,8 +1,15 @@
-pipeline{
+pipeline
+{
     agent any
-    stages{
-        stage('Build'){
-            echo 'Building the Application'
+
+    stages
+    {
+        stage('RajeshFirstJob')
+        {
+            steps
+            {
+                echo 'Building the Application'
+            }
         }
     }
 }
