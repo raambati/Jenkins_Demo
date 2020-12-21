@@ -11,5 +11,13 @@ pipeline
                 echo 'Building the Application'
             }
         }
+
+        stage('Rajesh Second Job')
+        {
+            steps
+            {
+                echo 'Building the Application'
+            }
+        }
     }
 }
