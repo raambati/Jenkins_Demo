@@ -13,11 +13,11 @@ pipeline
            steps
            {
                 echo 'executing yarn....'
-                nodejs('Node-10.17'){
+                nodejs('Node-10.17')
+                {
                     sh 'yarn install'
                 }
                echo 'testing executing yarn....'
-
            }
         }
         stage ('run backend')
@@ -27,10 +27,16 @@ pipeline
                 echo 'executing gradle...'
                 withGradle()
                 {
-                    sh './gradlew -v'
+                    sh """
+                    . .env/bin/activate
+                    if [[ -f requirements/preinstall.txt ]]; then
+                        pip install -r requirements/preinstall.txt
+                    fi
+                    pip install -r requirements/test.txt
+                    ./manage.py test --noinput
+                    """
                 }
             }
         }
     }
 }
-
