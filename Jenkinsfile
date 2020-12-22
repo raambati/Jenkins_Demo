@@ -1,28 +1,55 @@
+//    1. Create a Jenkins Pipeline Job
+//    2. Configure Jenkins declarative pipeline
+//        a. Where my pipeline should be running
+//        b. What are the tools that pipeline should be using
+//        c. My pipeline will always maintain 10 Max builds
+//        d. Checkout the Sourcecode from the git
+//        e. Build the Sourcecode using maven
+
 pipeline
 {
     agent any
-
+    tools
+    {
+        jdk 'JDK9'
+        maven 'Maven3'
+    }
+    options
+    {
+        timestamps()
+        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '10', artifactNumToKeepStr: '10', daysToKeepStr: '10', numToKeepStr: '10')), pipelineTriggers([[$class: 'PeriodicFolderTrigger', interval: '1m']])])
+    }
     stages
     {
-        stage('Rajesh First Job')
+        stage ('Display PATH of Jenkins')
         {
             steps
             {
-                echo 'Git Checkout'
-                script{
-                    def browsers = {'chrome','firefox'}
-                    for (int i = 0; i < browsers.size(); ++i ){
-                        echo = "Testing the $browsers[i] browser"
-                    }
-                }
+                sh '''
+                    echo "This is a Declarative Pipeline for building ServiceApp"
+                    echo "PATH = ${PATH}"
+                '''
             }
         }
-
-        stage('Rajesh Second Job')
+        stage('Checkout the Source Code')
         {
             steps
             {
-                echo 'Building the Application'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/raambati/Jenkins_Demo.git']]])
+            }
+        }
+        stage('Building the Sourcecode using Maven')
+        {
+            steps
+            {
+                sh 'mvn clean compile install'
+            }
+        }
+        stage('Archive Artefact for ServiceApp')
+        {
+            steps
+            {
+                archiveArtifacts artifacts: '**/**/*.war', followSymlinks: false
             }
         }
     }
