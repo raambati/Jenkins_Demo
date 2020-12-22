@@ -17,7 +17,7 @@ pipeline
     options
     {
         timestamps()
-        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '10', artifactNumToKeepStr: '10', daysToKeepStr: '10', numToKeepStr: '10')), pipelineTriggers([[$class: 'PeriodicFolderTrigger', interval: '1m']])])
+        buildDiscarder(logRotator(daysToKeepStr: '10', numToKeepStr: '10'))
     }
     stages
     {
