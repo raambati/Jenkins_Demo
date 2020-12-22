@@ -4,7 +4,7 @@
 //        b. What are the tools that pipeline should be using
 //        c. My pipeline will always maintain 10 Max builds
 //        d. Checkout the Sourcecode from the git
-//        e. Build the Sourcecode using maven
+//        e. Build the Sourcecode using maven 
 
 pipeline
 {
