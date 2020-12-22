@@ -33,7 +33,7 @@ pipeline {
         }
         stage('JUnit') {
             steps {
-                echo 'This is Sample testing ******'
+                echo 'This is for Santosh Batchu'
             }
         }
     }
