@@ -4,19 +4,19 @@ pipeline
 
     stages
     {
-        stage('checkout source code')
+        stage('Rajesh First Job')
         {
             steps
             {
-                git clone https://github.com/raambati/Jenkins_Demo.git
+                echo 'Git Checkout'
             }
         }
 
-        stage('build the source code')
+        stage('Rajesh Second Job')
         {
             steps
             {
-                mvn clean install
+                echo 'Building the Application'
             }
         }
     }
