@@ -8,7 +8,7 @@ pipeline
         {
             steps
             {
-                echo 'Git Checkout'
+
                 git clone https://github.com/raambati/Jenkins_Demo.git
             }
         }
@@ -17,7 +17,7 @@ pipeline
         {
             steps
             {
-                echo 'Building the Application'
+
                 mvn clean install
             }
         }
