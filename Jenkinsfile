@@ -33,8 +33,16 @@ pipeline {
         }
         stage('JUnit') {
             steps {
-                echo 'This is Sample testing'
+                echo 'This is Sample testing ******'
             }
         }
     }
+}
+
+pipeline{
+    agent any
+    stages{
+
+    }
+
 }
